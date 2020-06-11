@@ -1,4 +1,4 @@
-package com.baeldung.auth.config;
+package com.baeldung.jwt.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

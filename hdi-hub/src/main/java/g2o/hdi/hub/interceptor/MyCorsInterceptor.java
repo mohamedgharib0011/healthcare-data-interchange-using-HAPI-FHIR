@@ -20,6 +20,7 @@ public class MyCorsInterceptor extends CorsInterceptor {
 	      config.addAllowedHeader("x-fhir-starter");
 	      config.addAllowedHeader("Origin");
 	      config.addAllowedHeader("Accept");
+	      config.addAllowedHeader("Authorization");
 	      config.addAllowedHeader("X-Requested-With");
 	      config.addAllowedHeader("Content-Type");
 

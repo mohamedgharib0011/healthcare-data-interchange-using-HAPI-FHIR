@@ -1,4 +1,4 @@
-package com.baeldung.auth.config;
+package com.baeldung.jwt.config;
 
 import org.keycloak.platform.PlatformProvider;
 import org.keycloak.services.ServicesLogger;

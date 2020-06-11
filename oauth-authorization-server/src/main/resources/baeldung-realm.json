@@ -62,7 +62,7 @@
       "attributes" : { }
     } ],
     "client" : {
-      "newClient" : [ ],
+      "jwtClient" : [ ],
       "realm-management" : [ {
         "id" : "5d00243f-ceec-4b0c-995e-d86d5b8a0ae6",
         "name" : "view-clients",
@@ -301,6 +301,9 @@
     "enabled" : true,
     "totp" : false,
     "emailVerified" : false,
+    "attributes" : {
+      "organization" : "baeldung"
+    },
     "credentials" : [ {
       "id" : "024b62f1-3af0-49fc-a15f-e843b72e00df",
       "type" : "password",
@@ -426,20 +429,18 @@
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "b88ce206-63d6-43b6-87c9-ea09d8c02f32",
-    "clientId" : "newClient",
+    "clientId" : "jwtClient",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "clientAuthenticatorType" : "client-secret",
-    "secret" : "newClientSecret",
-    "redirectUris" : [ "http://localhost:8082/new-client/login/oauth2/code/custom",
-    "http://localhost:8089/",
-    "http://localhost:8089/auth/redirect/"],
+    "secret" : "jwtClientSecret",
+    "redirectUris" : [ "http://localhost:8084/" , "http://localhost:4200/*"],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
     "standardFlowEnabled" : true,
-    "implicitFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
     "directAccessGrantsEnabled" : true,
     "serviceAccountsEnabled" : false,
     "publicClient" : false,
@@ -463,6 +464,23 @@
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
+    "protocolMappers": [
+        {
+          "id": "06e5fc8f-3553-4c75-aef4-5a4d7bb6c0d1",
+          "name": "organization",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "organization",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "organization",
+            "jsonType.label": "String"
+          }
+        }
+      ],
     "defaultClientScopes" : [ "role_list", "profile" ],
     "optionalClientScopes" : [ "web-origins", "address", "read", "phone", "roles", "offline_access", "microprofile-jwt", "write", "email" ]
   }, {
@@ -1091,7 +1109,40 @@
         "certificate" : [ "MIICnzCCAYcCBgFuhB77/jANBgkqhkiG9w0BAQsFADATMREwDwYDVQQDDAhiYWVsZHVuZzAeFw0xOTExMTkxNDQyMzNaFw0yOTExMTkxNDQ0MTNaMBMxETAPBgNVBAMMCGJhZWxkdW5nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsw+lmV2HbpgXllKS+ccyCerlWDir32Y3yFvXF3CbzYRKVg/4FddA8itMCPpPjVOAo26bi/0WImHHYPyGxSH3QQIQaSdS5AFUNarpFc9M/W4Bu7k5h8sKb+vzZA3hMLFyvmQ2JtY8Zuqi1BBB33OAlkOHprJFTrrt1xa4a6KJjKXlDp5o5hOFgvZbsW+k/fBU0CLCbL3PlXQLhqHgEncpL9L9FF/xDbPIGftxjEWcBPFG/SuyygT35xRFMxB7ifR+wJZwVnoC4RhbhgJdL2EiUVT7wq5MTsxr2j4nAAJYatK/7OTecs6y/7bGNAGEoqh4Q3X3D95YFex0scmHgY1hWwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCLf01IsqWCKF2vw5y/NPCgKFEP4vtlXvr1XusMr9sAMSgbAVKLm5wZg4Ue8Q7iUq1LJzZ7EOeaXfIHxk33vjf0RlJQAaVn2K/kZJ4rFXuU6g+mpoRgiFsCPNexXXMdG294osyJ60g5OWCt5KrdocFjkKbF9EYm2CBj20G5MxCf+VDGDIcNvgzp478CZODiFVb6JgQqRrE3CGzQKdKiHG9cbXAledMJuWw3h0dzAqM46nl7GRkNK2cmVJO+cDD7xMrD83Q84PoG1ixMsQ/Tv5CqfREC4Dp9/j4XaoEOJ5S7oBaiRqTMzxk/lPjmbUrdyLM0Kokrrwc2yF74m9NuwHh2" ],
         "priority" : [ "100" ]
       }
-    }, {
+    },
+          {
+        "id": "59412b8d-aad8-4ab8-84ec-e546900fc124",
+        "name": "java-keystore",
+        "providerId": "java-keystore",
+        "subComponents": {},
+        "config": {
+          "keystorePassword": [
+            "mypass"
+          ],
+          "keyAlias": [
+            "mytest"
+          ],
+          "keyPassword": [
+            "mypass"
+          ],
+          "active": [
+            "true"
+          ],
+          "keystore": [
+            "src/main/resources/mytest.jks"
+          ],
+          "priority": [
+            "101"
+          ],
+          "enabled": [
+            "true"
+          ],
+          "algorithm": [
+            "RS256"
+          ]
+        }
+      }, 
+    {
       "id" : "48d40de3-6234-42e8-9449-f68f56abb54b",
       "name" : "aes-generated",
       "providerId" : "aes-generated",
