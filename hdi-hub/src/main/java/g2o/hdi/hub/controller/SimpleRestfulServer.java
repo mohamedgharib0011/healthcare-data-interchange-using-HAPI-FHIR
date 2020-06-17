@@ -26,7 +26,7 @@ public class SimpleRestfulServer extends RestfulServer {
 		
 		// enable CORS
 		registerInterceptor(new MyCorsInterceptor());
-//		registerInterceptor(new MyAuthorizationInterceptor());
+		registerInterceptor(new MyAuthorizationInterceptor());
 		
 		
 	}

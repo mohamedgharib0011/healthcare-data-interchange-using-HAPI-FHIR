@@ -13,3 +13,7 @@ keycloak:
       username: bael-admin
       password: pass
     realmImportFile: baeldung-realm.json
+
+
+#john@test.com / 123
+#mike@other.com / pass

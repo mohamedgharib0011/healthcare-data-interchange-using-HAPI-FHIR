@@ -17,10 +17,6 @@ public class MyAuthorizationInterceptor extends ca.uhn.fhir.rest.server.intercep
       // 1- Validate the JWT token
       // 2- APply authorization
       // 3- Register this interceptor in restful server
-      
-      
-      System.out.println("eeeeeeeeeee");
-      System.out.println(authHeader);
 
       RuleBuilder builder = new RuleBuilder();
       builder
