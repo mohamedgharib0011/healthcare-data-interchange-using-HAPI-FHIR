@@ -1,0 +1,11 @@
+<div class="container" role="main" style="margin: 100px;">
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+        You don't have enough permission to view this patient.
+    </div>
+    <div *ngIf="patient">
+        <p><b>ID: </b> {{patient.id}}</p>
+        <p><b>Family: </b> {{patient.name.family}}</p>
+        <p><b>BirthDate: </b> {{patient.birthDate}}</p>
+        <p><b>Gender: </b> {{patient.gender}}</p>
+    </div>
+</div>

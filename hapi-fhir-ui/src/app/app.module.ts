@@ -7,17 +7,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import {RouterModule,Routes} from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PatientComponent } from './patient/patient.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'patient', component: PatientComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    PatientComponent
     
   ],
   imports: [

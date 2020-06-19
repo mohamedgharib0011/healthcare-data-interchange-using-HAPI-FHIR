@@ -23,6 +23,13 @@ export class ApiCallService {
       'Authorization': 'Bearer '+Cookie.get('access_token')});
     return this._http.get("http://localhost:8080/Patient/",{headers:headers});
   }
+
+  getPatient(id:string): Observable<any> {
+    var headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 
+      'Authorization': 'Bearer '+Cookie.get('access_token')});
+    return this._http.get("http://localhost:8080/Patient/"+id,{headers:headers});
+  }
   searchOrgs(): Observable<any> {
     return this._http.get("http://localhost:8080/Organization/");
   }
@@ -47,7 +54,6 @@ export class ApiCallService {
     var expireDate = new Date().getTime() + (1000 * token.expires_in);
     Cookie.set("access_token", token.access_token, expireDate);
     console.log('Obtained Access token');
-    this.getOrganization();
     window.location.href = 'http://localhost:4200';
   }
  
@@ -67,11 +73,11 @@ export class ApiCallService {
     window.location.reload();
   }
 
-  getOrganization(){
+  getEmail(){
     var token = Cookie.get("access_token");
     
     var payload = this.jwtHelper.decodeToken(token);
     console.log(payload);
-    return payload;
+    return payload?.preferred_username;
   }
 }
