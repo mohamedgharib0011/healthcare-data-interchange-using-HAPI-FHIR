@@ -4,7 +4,7 @@
     </div>
     <div *ngIf="patient">
         <p><b>ID: </b> {{patient.id}}</p>
-        <p><b>Family: </b> {{patient.name.family}}</p>
+        <p><b>Family: </b> {{patient.name[0].given}}</p>
         <p><b>BirthDate: </b> {{patient.birthDate}}</p>
         <p><b>Gender: </b> {{patient.gender}}</p>
     </div>
